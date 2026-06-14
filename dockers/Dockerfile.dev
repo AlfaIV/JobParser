@@ -1,0 +1,29 @@
+FROM mcr.microsoft.com/playwright:v1.60.0-noble
+
+# FROM node:lts
+
+# # Install system dependencies for Playwright
+# RUN apt-get update && apt-get install -y \
+#     libnspr4 \
+#     libnss3 \
+#     libatk1.0-0 \
+#     libatk-bridge2.0-0 \
+#     libcups2 \
+#     libdrm2 \
+#     libxkbcommon0 \
+#     libxcomposite1 \
+#     libxdamage1 \
+#     libxext6 \
+#     libxfixes3 \
+#     libxrandr2 \
+#     libgbm1 \
+#     libasound2 \
+#     libX11-xcb.so.1 \
+#     libXcursor.so.1 \
+#     libgtk-3.so.0 \
+#     libgdk-3.so.0 \
+#     && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@latest-8 --activate
+CMD ["bash"]

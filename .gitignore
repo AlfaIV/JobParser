@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+!.env.example
+!.env.template
+
+# Playwright
+playwright-report/
+test-results/
+*.playwright
+.playwright/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# Docker local overrides
+docker-compose.override.yml
+
+# Kilo local state
+.kilo/node_modules/
+.kilo/package-lock.json
+.kilo/agent-manager.json
+.kilo/state/
+.kilo/sessions/
+.kilo/*.log
+!.kilo/kilo.jsonc
+!.kilo/rules/
+!.kilo/agent/
+!.kilo/command/
+
+# Misc
+.cache/
+.tmp/
+*.log
+*.tmp
+*.bak

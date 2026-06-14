@@ -1,0 +1,31 @@
+# To learn more, see the full config.yaml reference: https://docs.continue.dev/reference
+
+name: JobParser
+version: 1.0.0
+schema: v1
+
+models:
+  - name: deepseek
+    provider: ollama
+    model: deepseek-coder-v2:16b
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+  - name: qwen2.5
+    provider: ollama
+    model: qwen2.5-coder:14b  
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+      - edit
+  - name: nomic
+    provider: ollama
+    model: nomic-embed-text:latest
+    apiBase: http://localhost:11434
+    roles:
+      - autocomplete
+
+# # MCP Servers that Continue can access
+# # https://docs.continue.dev/customization/mcp-tools
+# mcpServers:
+#   - uses: anthropic/memory-mcp
