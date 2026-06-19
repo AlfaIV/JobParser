@@ -29,3 +29,9 @@ jobs:
 
       - name: Run tests
         run: pnpm run test
+  dockerBuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build Docker container
+        run: docker build -t jobparser-dev -f ./dockers/Dockerfile.dev .
