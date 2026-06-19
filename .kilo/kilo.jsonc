@@ -6,9 +6,25 @@
         "OPENROUTER_API_KEY"
       ],
       "model": "openrouter/free"
+      // nemotron3ultra
     },
+    "ollama": {
+      "options": {
+        "baseURL": "http://localhost:11434/api/chat"
+      },
+      "models": {
+        "qwen": {
+          "name": "qwen2.5-coder:14b",
+          "tool_call": true,
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        }
+      }
+    }
   },
   "instructions": [
-    ".kilo/rules/commonRules.md",
-  ],
+    ".kilo/rules/commonRules.md"
+  ]
 }
