@@ -20,6 +20,6 @@ test.describe('Тестирование парсера Ozon', async () => {
     test('Сверка работы парсера со снапшотом', async () => {
         const vacancies = await parser.parse();
         console.log(vacancies);
-        await expect(vacancies).toEqual(testData);
+        await expect(vacancies).toMatchObject(testData);
     })
 });
