@@ -2,8 +2,9 @@ import { resolve } from 'path';
 import { OzonParser } from './parsers/ozon/ozonParser.ts';
 
 const main = async (): Promise<void> => {
-  const absolutePath = resolve(process.cwd(), 'src/parsers/ozon/ozon.html');
-  const url = `file://${absolutePath}`;
+  // const absolutePath = resolve(process.cwd(), 'src/parsers/ozon/ozon.html');
+  // const url = `file://${absolutePath}`;
+  const url = `https://ozon.tech/vacancies/?directions=Разработка&techs=TypeScript`;
 
   const parser = new OzonParser(url);
 
