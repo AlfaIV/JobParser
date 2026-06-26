@@ -3,7 +3,8 @@ FROM mcr.microsoft.com/playwright:v1.60.0-noble
 # FROM node:lts
 
 # # Install system dependencies for Playwright
-# RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
+    sqlite3
 #     libnspr4 \
 #     libnss3 \
 #     libatk1.0-0 \
