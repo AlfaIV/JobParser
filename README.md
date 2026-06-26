@@ -14,6 +14,13 @@
     docker start jobparser
     docker exec -it jobparser bash
 ```
+Запуск базы данных
+
+```bash
+    docker build -t sqllite -f .\dockers\Dockerfile.SQLite .
+    docker run -it --rm -v ${pwd}/database:/database sqlite:latest
+    sqlite3 ./vacancies.sqlite < init.sql
+```
 
 ```bash
     pnpm exec playwright open
