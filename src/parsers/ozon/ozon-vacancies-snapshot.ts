@@ -1,4 +1,6 @@
-export const testData = [
+import type { Vacancy } from "../../entity.ts";
+
+export const testData:Omit<Vacancy, 'sourceLinks'>[] = [
   {
     id: 'CLKs8vBChrXygVikO7fvIZ',
     companyName: 'Ozon',
