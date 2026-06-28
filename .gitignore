@@ -44,6 +44,10 @@ docker-compose.override.yml
 !.kilo/agent/
 !.kilo/command/
 
+#continue
+.continue/plans
+.continue/plans/*
+
 # Misc
 .cache/
 .tmp/

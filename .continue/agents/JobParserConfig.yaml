@@ -5,12 +5,35 @@ version: 1.0.0
 schema: v1
 
 models:
+  - name: openrouter-gpt
+    provider: openrouter
+    model: openai/gpt-oss-120b:free
+    apiBase: https://openrouter.ai/api/v1
+    apiKey: ""
+    roles:
+      - chat
+      - edit
+    capabilities:
+      - tool_use
+  
+  - name: openrouter-free
+    provider: openrouter
+    model: openrouter/free
+    apiBase: https://openrouter.ai/api/v1
+    apiKey: ""
+    roles:
+      - chat
+      - edit
+    capabilities:
+      - tool_use
+
   - name: deepseek
     provider: ollama
     model: deepseek-coder-v2:16b
     apiBase: http://localhost:11434
     roles:
       - chat
+
   - name: qwen2.5
     provider: ollama
     model: qwen2.5-coder:14b  
@@ -18,6 +41,7 @@ models:
     roles:
       - chat
       - edit
+
   - name: nomic
     provider: ollama
     model: nomic-embed-text:latest
