@@ -1,20 +1,27 @@
-import { eq } from 'drizzle-orm';
+import { eq, ne } from 'drizzle-orm';
 import { db } from "../db.ts";
 import { vacancies } from "../models/vacancies.ts";
 import type { Vacancy } from "../entity.ts";
 
 export const getVacancyById = async (id: string): Promise<Vacancy | null> => {
-  const row = await db.select().from(vacancies).where(eq(vacancies.id, id)).get();
-  if (!row) return null;
-  return {
-    id: row.id,
-    companyName: row.companyName,
-    positionName: row.positionName,
-    description: row.description ?? undefined,
-    sourceLinks: row.sourceLinks,
-    vacancyLinks: row.vacancyLinks,
-    tags: row.tags ? JSON.parse(row.tags) : undefined,
-  };
+  try {
+    const row = await db.select().from(vacancies).where(eq(vacancies.id, id)).get();
+    if (!row) return null;
+    return {
+      id: row.id,
+      companyName: row.companyName,
+      positionName: row.positionName,
+      description: row.description ?? undefined,
+      sourceLinks: row.sourceLinks,
+      vacancyLinks: row.vacancyLinks,
+      tags: row.tags ? JSON.parse(row.tags) : undefined,
+      updateAt: row.updateAt,
+    };
+  } catch (e) {
+    console.log('ERROR - getVacancyById');
+    console.log(e);
+    return null;
+  }
 };
 
 type vacancyModel = typeof vacancies.$inferInsert;
@@ -29,8 +36,8 @@ export const setVacancy = async (vacancy: Vacancy): Promise<void> => {
       vacancyLinks: vacancy.vacancyLinks,
       description: vacancy.description ?? '',
       tags: vacancy.tags ? JSON.stringify(vacancy.tags) : '',
+      updateAt: vacancy.updateAt,
     };
-
 
     await db.insert(vacancies).values(row).run();
   }
@@ -40,3 +47,42 @@ export const setVacancy = async (vacancy: Vacancy): Promise<void> => {
   }
 };
 
+export const updateVacancyUpdateDateById = async (id: string, updateDate: string): Promise<void> => {
+  try {
+    const updatedId = await db.update(vacancies).set({updateAt:updateDate}).where(eq(vacancies.id, id)).returning({ updatedId: vacancies.id});
+  }
+  catch (e) {
+    console.log('ERROR - updateVacancyUpdateDateById');
+    console.log(e);
+  }
+};
+
+export const removeVacancyById = async (id: string): Promise<void> => {
+  try {
+    await db.delete(vacancies).where(eq(vacancies.id, id)).run();
+  } catch (e) {
+    console.log('ERROR - removeVacancyById');
+    console.log(e);
+  }
+};
+
+export const getOutdatedVacancy = async (updateDate: string): Promise<Vacancy[] | null> => {
+  try {
+    const rows = await db.select().from(vacancies).where(ne(vacancies.updateAt, updateDate));
+    if (!rows) return null;
+    return rows.map((row) => ({
+      id: row.id,
+      companyName: row.companyName,
+      positionName: row.positionName,
+      description: row.description ?? undefined,
+      sourceLinks: row.sourceLinks,
+      vacancyLinks: row.vacancyLinks,
+      tags: row.tags ? JSON.parse(row.tags) : undefined,
+      updateAt: row.updateAt,
+    }));
+  } catch (e) {
+    console.log('ERROR - getVacancyById');
+    console.log(e);
+    return null;
+  }
+};

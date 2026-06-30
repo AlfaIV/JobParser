@@ -8,6 +8,7 @@ export type Vacancy = {
     sourceLinks: string,
     vacancyLinks: string,
     tags?: string[],
+    updateAt: string,
 }
 
 export interface SiteParser {
