@@ -19,7 +19,7 @@
 ```bash
     docker build -t sqllite -f .\dockers\Dockerfile.SQLite .
     docker run -it --rm -v ${pwd}/database:/database sqlite:latest
-    sqlite3 ./vacancies.sqlite < init.sql
+    sqlite3 ./database/vacancies.sqlite < ./database/init.sql
 ```
 
 ```bash
