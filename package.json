@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/main.ts",
+    "start:bot": "ts-node src/vkBot.ts",
     "test": "playwright test",
     "lint": "eslint ."
   },
@@ -27,6 +28,8 @@
   "packageManager": "pnpm@8.15.9+sha512.499434c9d8fdd1a2794ebf4552b3b25c0a633abcee5bb15e7b5de90f32f47b513aca98cd5cfd001c31f0db454bc3804edccd578501e4ca293a6816166bbd9f81",
   "dependencies": {
     "better-sqlite3": "^12.11.1",
-    "drizzle-orm": "^0.45.2"
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "vk-io": "^4.10.1"
   }
 }
