@@ -49,3 +49,6 @@
 
 https://openrouter.ai
 https://kilo.ai/docs/ai-providers/openrouter
+
+
+https://api.telegram.org/bot8891815489:AAF-HCR7pROZZTNsf6_H8aRIIWaIQ5U_S90/getMe
